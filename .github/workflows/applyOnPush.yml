@@ -16,6 +16,8 @@ jobs:
       PREFIX: svein78
    steps:
     - uses: actions/checkout@v3
+      with:
+       sparse-checkout: 'infra'
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
     
