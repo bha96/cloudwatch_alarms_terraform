@@ -32,7 +32,7 @@ jobs:
     - name: Terraform Plan
       id: plan
       working-directory: ./infra
-      run: terraform plan -var="prefix=$PREFIX" -var="alarm_email=$EMAIL" -destroy -no-color
+      run: terraform plan -var="alarm_email=$EMAIL" -destroy -no-color
       continue-on-error: true
 
     - name: Terraform Plan Status
