@@ -43,4 +43,4 @@ jobs:
     - name: Terraform Apply
       working-directory: ./infra
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'        
-      run: terraform apply -var="prefix=$PREFIX" -var="alarm_email=$EMAIL" -auto-approve
+      run: terraform apply -var="alarm_email=$EMAIL" -auto-approve
