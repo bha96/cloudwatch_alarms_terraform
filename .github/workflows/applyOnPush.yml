@@ -19,28 +19,19 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
     
-    - name: run cd
-      run: cd ./infra
-    - name: run ls
-      run: ls
-      
     - name: Terraform Init
       id: init
-      working-directory: ./infra
       run: terraform init
     
     - name: Terraform Plan
       id: plan
-      working-directory: ./infra
       run: terraform plan -var="alarm_email=$EMAIL" -destroy -no-color
       continue-on-error: true
 
     - name: Terraform Plan Status
-      working-directory: ./infra
       if: steps.plan.outcome == 'failure'
       run: exit 1
   
     - name: Terraform Apply
-      working-directory: ./infra
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'        
       run: terraform apply -var="alarm_email=$EMAIL" -auto-approve
