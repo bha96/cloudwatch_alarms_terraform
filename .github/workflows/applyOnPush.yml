@@ -14,11 +14,11 @@ jobs:
       EMAIL: ${{ secrets.EMAIL }}
       AWS_REGION: eu-west-1
       PREFIX: svein78
+   defaults:
+    run:
+     working-directory: infra
    steps:
     - uses: actions/checkout@v3
-      with:
-       sparse-checkout: 'infra'
-       sparse-checkout-cone-mode: false
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
     
