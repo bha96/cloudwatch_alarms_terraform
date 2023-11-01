@@ -19,10 +19,36 @@ resource "aws_cloudwatch_dashboard" "main" {
         "period": 300,
         "stat": "Maximum",
         "region": "eu-west-1",
-        "title": "Total number of accounts"
+        "title": "Totalt antall kontoer"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [
+            "${var.student_name}",
+            "bank_sum.value"
+          ]
+        ],
+        "period": 300,
+        "stat": "Maximum",
+        "region": "eu-west-1",
+        "title": "Money in the bank, pimpin ain't easy"
       }
     }
   ]
 }
 DASHBOARD
+}
+
+
+module "alarm" {
+  source = "./alarm_module"
+  alarm_email = var.alarm_email
+  prefix = var.student_name
 }
