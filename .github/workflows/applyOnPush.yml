@@ -25,7 +25,7 @@ jobs:
     
     - name: Terraform Plan
       id: plan
-      run: terraform plan -var="prefix=$PREFIX" -no-color
+      run: terraform plan -var="prefix=$PREFIX" -var="alarm_email=$EMAIL" -no-color
       continue-on-error: true
 
     - name: Terraform Plan Status
