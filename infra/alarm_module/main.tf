@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_metric_alarm" "threshold" {
-  alarm_name  = "${var.prefix} har for mye penger, løp!"
+  alarm_name  = "${var.prefix} har for mye penger, løp!!"
   namespace   = var.prefix
   metric_name = "bank_sum.value"
 
